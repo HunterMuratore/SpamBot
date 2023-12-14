@@ -1,0 +1,7 @@
+services:
+  spambot:
+    image: outfortheseason/spambot
+    container_name: spambot
+    env_file:
+      - .env
+    restart: unless-stopped

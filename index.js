@@ -10,8 +10,11 @@ if (!process.env.BOT_TOKEN) {
 }
 
 const BOT = new Client({
-    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages]
 });
+
+let intervalId;
+let sendingMessages = false;
 
 // Bot ready message
 BOT.on("ready", () => console.log("Connected to Discord!"));
@@ -51,3 +54,5 @@ BOT.on(Events.InteractionCreate, async interaction => {
         await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
       }
 });
+
+module.exports = { intervalId, sendingMessages };

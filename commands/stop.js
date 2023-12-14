@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const { intervalId, sendingMessages } = require('../index');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -8,6 +9,7 @@ module.exports = {
         if (intervalId) {
             clearInterval(intervalId);
             intervalId = null;
+            sendingMessages = false;
             interaction.reply('Spamming stopped.');
         } else {
             interaction.reply('Bot is not currently spamming.');
